@@ -18,9 +18,7 @@ public class MenuRepository {
         //ClassLoader classLoader = MenuRepository.class.getClassLoader();
         File file = new File(filename);
         this.listMenu= new ArrayList();
-        BufferedReader br = null;
-        try {
-            br = new BufferedReader(new FileReader(file));
+        try(BufferedReader br = new BufferedReader(new FileReader(file))) {
             String line = null;
             while((line=br.readLine())!=null){
                 MenuDataModel menuItem=getMenuItem(line);
