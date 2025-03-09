@@ -4,6 +4,7 @@ public class Payment {
     private int tableNumber;
     private PaymentType type;
     private double amount;
+
     public Payment(int tableNumber, PaymentType type, double amount) {
         this.tableNumber = tableNumber;
         this.type = type;

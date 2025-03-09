@@ -9,8 +9,8 @@ import java.util.List;
 import java.util.StringTokenizer;
 
 public class PaymentRepository {
-    private static String filename = "data/payments.txt";
-    private List<Payment> paymentList;
+    private static final String filename = "data/payments.txt";
+    private final List<Payment> paymentList;
 
     public PaymentRepository(){
         this.paymentList = new ArrayList<>();
@@ -49,26 +49,21 @@ public class PaymentRepository {
 
     public void add(Payment payment){
         paymentList.add(payment);
-        writeAll();
+        appendToFile(payment);
     }
 
     public List<Payment> getAll(){
         return paymentList;
     }
 
-    public void writeAll(){
+    public void appendToFile(Payment payment) {
         //ClassLoader classLoader = PaymentRepository.class.getClassLoader();
         File file = new File(filename);
 
-        BufferedWriter bw = null;
-        try {
-            bw = new BufferedWriter(new FileWriter(file));
-            for (Payment p:paymentList) {
-                System.out.println(p.toString());
-                bw.write(p.toString());
-                bw.newLine();
-            }
-            bw.close();
+        try(BufferedWriter bw = new BufferedWriter(new FileWriter(file));) {
+            System.out.println(payment.toString());
+            bw.write(payment.toString());
+            bw.newLine();
         } catch (IOException e) {
             e.printStackTrace();
         }

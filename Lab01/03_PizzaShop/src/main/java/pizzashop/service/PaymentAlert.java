@@ -7,10 +7,10 @@ import pizzashop.model.PaymentType;
 import java.util.Optional;
 
 public class PaymentAlert implements PaymentOperation {
-    private PizzaService service;
+    private RestaurantService service;
     private static final String LINE = "--------------------------";
 
-    public PaymentAlert(PizzaService service){
+    public PaymentAlert(RestaurantService service){
         this.service=service;
     }
 
@@ -50,8 +50,6 @@ public class PaymentAlert implements PaymentOperation {
         } else if (result.get() == cashPayment) {
             cashPayment();
             service.addPayment(tableNumber, PaymentType.CASH,totalAmount);
-        } else if (result.get() == cancel) {
-             cancelPayment();
         } else {
             cancelPayment();
         }
