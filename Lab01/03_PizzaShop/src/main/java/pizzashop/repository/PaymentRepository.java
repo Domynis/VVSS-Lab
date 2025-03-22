@@ -9,11 +9,18 @@ import java.util.List;
 import java.util.StringTokenizer;
 
 public class PaymentRepository {
-    private static final String filename = "data/payments.txt";
+    private final String filename;
     private final List<Payment> paymentList;
 
     public PaymentRepository(){
         this.paymentList = new ArrayList<>();
+        filename = "data/payments.txt";
+        readPayments();
+    }
+
+    public PaymentRepository(String filename) {
+        this.paymentList = new ArrayList<>();
+        this.filename = filename;
         readPayments();
     }
 
@@ -47,7 +54,7 @@ public class PaymentRepository {
         return item;
     }
 
-    public void add(Payment payment){
+    public void add(Payment payment) {
         paymentList.add(payment);
         appendToFile(payment);
     }
