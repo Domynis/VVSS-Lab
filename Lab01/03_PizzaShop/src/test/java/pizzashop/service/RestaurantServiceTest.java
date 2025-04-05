@@ -7,6 +7,8 @@ import pizzashop.model.PaymentType;
 import pizzashop.repository.PaymentRepository;
 
 import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -153,9 +155,27 @@ class RestaurantServiceTest {
         verifyAddedPayment(table, type, amount);
     }
 
+    @Test
+    @Tag("invalid")
+    @DisplayName("Invalid case: Null payment list")
+    void testGetTotalAmount_NullPaymentList() {
+        PaymentType type = PaymentType.CASH;
+
+        double total = restaurantService.getTotalAmount(type);
+        assertEquals(0.0, total, 0.01);
+    }
+
+
     @AfterEach
     void tearDown() {
         restaurantService = null;
+
+        // Delete test file content
+        try (FileWriter writer = new FileWriter(PAYMENTS_FILE)) {
+            writer.write("");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @AfterAll
