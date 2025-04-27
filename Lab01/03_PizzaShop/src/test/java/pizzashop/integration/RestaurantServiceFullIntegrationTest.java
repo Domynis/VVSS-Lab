@@ -23,7 +23,7 @@ public class RestaurantServiceFullIntegrationTest {
     private MenuRepository mockedMenuRepo;
 
     @BeforeEach
-    void setUp() throws IOException {
+    public void setUp() throws IOException {
         // Setup a temporary file with payments
         File tempFile = File.createTempFile("full_integration_payments", ".txt");
         tempFile.deleteOnExit();
@@ -39,7 +39,7 @@ public class RestaurantServiceFullIntegrationTest {
     }
 
     @Test
-    void testGetTotalAmountFullIntegration() {
+    public void testGetTotalAmountFullIntegration() {
         double totalCash = restaurantService.getTotalAmount(PaymentType.CASH);
         assertEquals(40.0, totalCash);
 
@@ -48,7 +48,7 @@ public class RestaurantServiceFullIntegrationTest {
     }
 
     @Test
-    void testAddPaymentFullIntegration() {
+    public void testAddPaymentFullIntegration() {
         int initialSize = restaurantService.getPayments().size();
         restaurantService.addPayment(6, PaymentType.CASH, 25.0);
 
