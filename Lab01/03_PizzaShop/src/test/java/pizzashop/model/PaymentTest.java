@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class PaymentTest {
 
     @Test
-    void testPaymentConstructorAndGetters() {
+    public void testPaymentConstructorAndGetters() {
         Payment payment = new Payment(5, PaymentType.CARD, 100.0);
 
         assertEquals(5, payment.getTableNumber());
@@ -16,7 +16,7 @@ public class PaymentTest {
     }
 
     @Test
-    void testPaymentSetters() {
+    public void testPaymentSetters() {
         Payment payment = new Payment(1, PaymentType.CASH, 50.0);
         payment.setTableNumber(3);
         payment.setType(PaymentType.CARD);
@@ -28,7 +28,7 @@ public class PaymentTest {
     }
 
     @Test
-    void testToStringFormat() {
+    public void testToStringFormat() {
         Payment payment = new Payment(2, PaymentType.CASH, 20.0);
         assertEquals("2,CASH,20.0", payment.toString());
     }

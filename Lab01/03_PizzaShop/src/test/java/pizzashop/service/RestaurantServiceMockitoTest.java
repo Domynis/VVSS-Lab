@@ -22,7 +22,7 @@ public class RestaurantServiceMockitoTest {
     private PaymentRepository paymentRepo;
 
     @BeforeEach
-    void setUp() {
+    public void setUp() {
         paymentRepo = Mockito.mock(PaymentRepository.class);
         restaurantService = new RestaurantService(null, paymentRepo);
     }
@@ -30,7 +30,7 @@ public class RestaurantServiceMockitoTest {
     @Test
     @Tag("invalid")
     @DisplayName("Invalid Case: Get total amount with null list")
-    void testGetTotalAmount_nullList() {
+    public void testGetTotalAmount_nullList() {
         Mockito.when(paymentRepo.getAll()).thenReturn(null);
 
         double result = restaurantService.getTotalAmount(PaymentType.CASH);
@@ -41,7 +41,7 @@ public class RestaurantServiceMockitoTest {
     @Test
     @Tag("invalid")
     @DisplayName("Invalid Case: Get total amount with empty list")
-    void testGetTotalAmount_emptyList() {
+    public void testGetTotalAmount_emptyList() {
         Mockito.when(paymentRepo.getAll()).thenReturn(Collections.emptyList());
 
         double result = restaurantService.getTotalAmount(PaymentType.CASH);
@@ -52,7 +52,7 @@ public class RestaurantServiceMockitoTest {
     @Test
     @Tag("valid")
     @DisplayName("Valid Case: Get total zero amount with non-empty list")
-    void testGetTotalAmount_nonEmptyList() {
+    public void testGetTotalAmount_nonEmptyList() {
         Mockito.when(paymentRepo.getAll()).thenReturn(Collections.singletonList(new Payment(1, PaymentType.CARD, 100)));
 
         double result = restaurantService.getTotalAmount(PaymentType.CASH);
@@ -63,7 +63,7 @@ public class RestaurantServiceMockitoTest {
     @Test
     @Tag("valid")
     @DisplayName("Valid Case: Get total amount with non-empty list")
-    void testGetTotalAmountWith_matchingType() {
+    public void testGetTotalAmountWith_matchingType() {
         Mockito.when(paymentRepo.getAll()).thenReturn(Collections.singletonList(new Payment(1, PaymentType.CARD, 100)));
 
         double result = restaurantService.getTotalAmount(PaymentType.CARD);
@@ -74,7 +74,7 @@ public class RestaurantServiceMockitoTest {
     @Test
     @Tag("valid")
     @DisplayName("Valid Case: Get total amount with non-empty list and all types")
-    void testGetTotalAmountWith_allTypes() {
+    public void testGetTotalAmountWith_allTypes() {
         Mockito.when(paymentRepo.getAll()).thenReturn(
                 Arrays.asList(
                         new Payment(1, PaymentType.CASH, 100),
@@ -89,7 +89,7 @@ public class RestaurantServiceMockitoTest {
     @Test
     @Tag("valid")
     @DisplayName("Valid Case: Get total amount with non-empty list and multiple matching types")
-    void testGetTotalAmountWith_multipleMatchingTypes() {
+    public void testGetTotalAmountWith_multipleMatchingTypes() {
         Mockito.when(paymentRepo.getAll()).thenReturn(
                 Arrays.asList(
                         new Payment(1, PaymentType.CASH, 100),

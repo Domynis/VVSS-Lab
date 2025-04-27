@@ -18,7 +18,7 @@ public class PaymentRepositoryTest {
     private PaymentRepository paymentRepository;
 
     @BeforeEach
-    void setUp() throws IOException {
+    public void setUp() throws IOException {
         // Prepare a temporary file
         File tempFile = File.createTempFile("test_payments", ".txt");
         tempFile.deleteOnExit(); // delete file on JVM exit
@@ -31,7 +31,7 @@ public class PaymentRepositoryTest {
     }
 
     @Test
-    void testReadPayments() {
+    public void testReadPayments() {
         List<Payment> payments = paymentRepository.getAll();
         assertEquals(2, payments.size());
 
@@ -41,7 +41,7 @@ public class PaymentRepositoryTest {
     }
 
     @Test
-    void testAddPayment() {
+    public void testAddPayment() {
         Payment newPayment = new Payment(3, PaymentType.CARD, 70.0);
         PaymentRepository spyRepo = spy(paymentRepository);
 
