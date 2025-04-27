@@ -9,9 +9,8 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import pizzashop.model.MenuDataModel;
-import pizzashop.gui.OrdersGUI;
 import pizzashop.service.PaymentAlert;
-import pizzashop.service.PizzaService;
+import pizzashop.service.RestaurantService;
 
 import java.util.Calendar;
 import java.util.List;
@@ -49,22 +48,24 @@ public class OrdersGUIController {
     public static double getTotalAmount() {
         return totalAmount;
     }
-    public void setTotalAmount(double totalAmount) {
-        this.totalAmount = totalAmount;
+    public static void setTotalAmount(double totalAmount) {
+        OrdersGUIController.totalAmount = totalAmount;
     }
 
-    private PizzaService service;
+    private RestaurantService service;
     private int tableNumber;
 
     public ObservableList<String> observableList;
-    private TableView<MenuDataModel> table = new TableView<MenuDataModel>();
+    private final TableView<MenuDataModel> table = new TableView<>();
     private ObservableList<MenuDataModel> menuData;// = FXCollections.observableArrayList();
     private Calendar now = Calendar.getInstance();
     private static double totalAmount;
 
-    public OrdersGUIController(){ }
+    public OrdersGUIController(){
+        // This constructor is used by FXMLLoader
+    }
 
-    public void setService(PizzaService service, int tableNumber){
+    public void setService(RestaurantService service, int tableNumber){
         this.service=service;
         this.tableNumber=tableNumber;
         initData();
@@ -72,8 +73,12 @@ public class OrdersGUIController {
     }
 
     private void initData(){
-        menuData = FXCollections.observableArrayList(service.getMenuData());
-        menuData.setAll(service.getMenuData());
+        menuData = FXCollections.observableArrayList(service.getMenuData()
+                .stream()
+                .map(menuItem -> new MenuDataModel(menuItem.getMenuItem(), menuItem.getQuantity(), menuItem.getPrice()))
+                .collect(Collectors.toList())
+        );
+//        menuData.setAll(service.getMenuData());
         orderTable.setItems(menuData);
 
         //Controller for Place Order Button

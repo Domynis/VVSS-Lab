@@ -10,41 +10,23 @@ import java.util.Calendar;
 
 public class KitchenGUIController {
     @FXML
-    private ListView kitchenOrdersList;
+    private ListView<String> kitchenOrdersList;
     @FXML
     public Button cook;
     @FXML
     public Button ready;
 
-    public static  ObservableList<String> order = FXCollections.observableArrayList();
+    public static ObservableList<String> order = FXCollections.observableArrayList();
     private Object selectedOrder;
-    private Calendar now = Calendar.getInstance();
+    private final Calendar now = Calendar.getInstance();
     private String extractedTableNumberString = new String();
     private int extractedTableNumberInteger;
     //thread for adding data to kitchenOrderList
-    public  Thread addOrders = new Thread(new Runnable() {
-        @Override
-        public void run() {
-            while (true) {
-                Platform.runLater(new Runnable() {
-                    @Override
-                    public void run() {
-                        kitchenOrdersList.setItems(order);
-                        }
-                });
-                try {
-                    Thread.sleep(100);
-                  } catch (InterruptedException ex) {
-                    break;
-                }
-            }
-        }
-    });
 
     public void initialize() {
-        //starting thread for adding data to kitchenOrderList
-        addOrders.setDaemon(true);
-        addOrders.start();
+        // Bind the ListView to the ObservableList
+        kitchenOrdersList.setItems(order);
+
         //Controller for Cook Button
         cook.setOnAction(event -> {
             selectedOrder = kitchenOrdersList.getSelectionModel().getSelectedItem();
