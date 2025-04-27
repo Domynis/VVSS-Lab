@@ -16,7 +16,7 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.mock;
 
-class RestaurantServiceFullIntegrationTest {
+public class RestaurantServiceFullIntegrationTest {
 
     private RestaurantService restaurantService;
     private PaymentRepository realPaymentRepo;

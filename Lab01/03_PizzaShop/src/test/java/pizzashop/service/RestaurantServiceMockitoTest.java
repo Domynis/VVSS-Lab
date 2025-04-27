@@ -14,7 +14,7 @@ import java.util.Collections;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
-class RestaurantServiceMockitoTest {
+public class RestaurantServiceMockitoTest {
     @InjectMocks
     private RestaurantService restaurantService;
 

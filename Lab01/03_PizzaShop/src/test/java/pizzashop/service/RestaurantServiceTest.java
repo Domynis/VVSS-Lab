@@ -12,7 +12,7 @@ import java.io.IOException;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class RestaurantServiceTest {
+public class RestaurantServiceTest {
     private static final String PAYMENTS_FILE = "data/test/payments.txt";
 
     private RestaurantService restaurantService;
