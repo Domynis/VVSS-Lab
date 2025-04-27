@@ -22,7 +22,7 @@ public class RestaurantServiceWithRepoTest {
     private MenuRepository mockedMenuRepo;
 
     @BeforeEach
-    void setUp() {
+    public void setUp() {
         mockedMenuRepo = mock(MenuRepository.class); // still mock MenuRepo
         realPaymentRepo = new PaymentRepository() {
             @Override
@@ -43,7 +43,7 @@ public class RestaurantServiceWithRepoTest {
     }
 
     @Test
-    void testGetTotalAmountIntegrationR() {
+    public void testGetTotalAmountIntegrationR() {
         double totalCash = restaurantService.getTotalAmount(PaymentType.CASH);
         assertEquals(20.0, totalCash);
 
@@ -52,7 +52,7 @@ public class RestaurantServiceWithRepoTest {
     }
 
     @Test
-    void testAddPaymentIntegrationR() {
+    public void testAddPaymentIntegrationR() {
         restaurantService.addPayment(3, PaymentType.CARD, 30.0);
 
         List<Payment> payments = realPaymentRepo.getAll();
