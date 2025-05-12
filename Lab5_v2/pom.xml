@@ -16,24 +16,17 @@
     </properties>
 
     <repositories>
-      <repository>
-        <snapshots>
-        <enabled>false</enabled>
-        </snapshots>
-        <id>central</id>
-        <name>bintray</name>
-        <url>http://jcenter.bintray.com</url>
-      </repository>
+        <repository>
+            <id>central</id>
+            <url>https://repo.maven.apache.org/maven2</url>
+        </repository>
     </repositories>
+
     <pluginRepositories>
-      <pluginRepository>
-        <snapshots>
-        <enabled>false</enabled>
-        </snapshots>
-        <id>central</id>
-        <name>bintray-plugins</name>
-        <url>http://jcenter.bintray.com</url>
-      </pluginRepository>
+        <pluginRepository>
+            <id>central</id>
+            <url>https://repo.maven.apache.org/maven2</url>
+        </pluginRepository>
     </pluginRepositories>
 
     <dependencies>

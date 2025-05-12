@@ -16,8 +16,15 @@ public class NavBarPage extends PageObject {
     @FindBy(xpath = "//a[@title='My Shop']")
     private WebElementFacade logo;
 
+    @FindBy(xpath = "//a[@title='Log me out']")
+    private WebElementFacade logoutButton;
+
     public void click_signIn() {
         lookupButton.click();
+    }
+
+    public boolean isSignInButtonDisplayed() {
+        return lookupButton.isDisplayed();
     }
 
     public void click_logo() {
@@ -26,5 +33,9 @@ public class NavBarPage extends PageObject {
 
     public String getAccountName() {
         return accountPageButton.getText();
+    }
+
+    public void clickOnLogoutButton() {
+        logoutButton.click();
     }
 }

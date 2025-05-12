@@ -24,4 +24,10 @@ public class NavBarPageSteps {
         String actualName = navBarPage.getAccountName();
         Assert.assertThat(actualName, containsString(expectedName));
     }
+
+    @Step
+    public void logout() {
+        navBarPage.clickOnLogoutButton();
+        Assert.assertTrue(navBarPage.isSignInButtonDisplayed());
+    }
 }

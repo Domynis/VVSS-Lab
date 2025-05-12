@@ -18,5 +18,6 @@ public class CheckoutPageSteps {
         checkoutPage.clickOnCloseButton();
         checkoutPage.clickOnTermsOfServiceCheckbox();
         Assert.assertTrue("Terms of service checkbox is not checked", checkoutPage.isTermsOfServiceChecked());
+        checkoutPage.clickOnProceedToCheckoutButton2();
     }
 }

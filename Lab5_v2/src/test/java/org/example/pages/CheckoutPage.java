@@ -36,7 +36,6 @@ public class CheckoutPage extends PageObject {
     }
 
     public void clickOnTermsOfServiceCheckbox() {
-//        termsOfServiceCheckbox.click();
         termsOfServiceSpan.click();
     }
 

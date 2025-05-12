@@ -30,9 +30,12 @@ public class ScenarioStory {
     @Steps
     public CheckoutPageSteps checkoutPage;
 
+    @Steps
+    public PaymentPageSteps paymentPage;
+
     @Issue("#CLOTHES-3")
     @Test
-    public void loginMatchingCredentials_succes() {
+    public void sequenceOfFeatures_succes() {
         homePage.open_homePage();
         navBarPage.clickSignIn();
         loginPage.login("dominic.bacs@stud.ubbcluj.ro", "maga123");
@@ -52,5 +55,8 @@ public class ScenarioStory {
         checkoutPage.clickOnProceedToCheckoutButton();
         checkoutPage.completeCheckoutPage2();
 
+        paymentPage.completePaymentPage();
+
+        navBarPage.logout();
     }
 }
