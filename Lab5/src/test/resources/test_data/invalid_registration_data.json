@@ -1,0 +1,30 @@
+[
+  {
+    "firstName": "",
+    "lastName": "User",
+    "email": "test@example.com",
+    "password": "Password123!",
+    "errorType": "firstNameRequired"
+  },
+  {
+    "firstName": "Test",
+    "lastName": "",
+    "email": "test@example.com",
+    "password": "Password123!",
+    "errorType": "lastNameRequired"
+  },
+  {
+    "firstName": "Test",
+    "lastName": "User",
+    "email": "invalidemail",
+    "password": "Password123!",
+    "errorType": "invalidEmail"
+  },
+  {
+    "firstName": "Test",
+    "lastName": "User",
+    "email": "test@example.com",
+    "password": "123",
+    "errorType": "weakPassword"
+  }
+]

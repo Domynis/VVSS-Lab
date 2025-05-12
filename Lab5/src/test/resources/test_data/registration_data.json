@@ -1,0 +1,16 @@
+[
+  {
+    "firstName": "Test",
+    "lastName": "User",
+    "email": "test_user123@example.com",
+    "password": "TestPassword123!",
+    "expectedResult": "success"
+  },
+  {
+    "firstName": "Maria",
+    "lastName": "Popescu",
+    "email": "maria.popescu@example.com",
+    "password": "Password123!",
+    "expectedResult": "success"
+  }
+]

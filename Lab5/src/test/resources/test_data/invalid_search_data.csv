@@ -1,0 +1,4 @@
+searchQuery,expectedEmptyResults
+xzy123!@#,true
+!@#$%^&*,true
+zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz,true
