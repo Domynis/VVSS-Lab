@@ -2,6 +2,7 @@ package org.example.steps.serenity;
 
 import net.thucydides.core.annotations.Step;
 import org.example.pages.CheckoutPage;
+import org.junit.Assert;
 
 public class CheckoutPageSteps {
     CheckoutPage checkoutPage;
@@ -12,7 +13,10 @@ public class CheckoutPageSteps {
     }
 
     @Step
-    public void clickOnProceedToCheckoutButton2() {
+    public void completeCheckoutPage2() {
         checkoutPage.clickOnProceedToCheckoutButton2();
+        checkoutPage.clickOnCloseButton();
+        checkoutPage.clickOnTermsOfServiceCheckbox();
+        Assert.assertTrue("Terms of service checkbox is not checked", checkoutPage.isTermsOfServiceChecked());
     }
 }

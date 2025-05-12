@@ -50,7 +50,7 @@ public class ScenarioStory {
 
         checkoutPage.clickOnProceedToCheckoutButton();
         checkoutPage.clickOnProceedToCheckoutButton();
-        checkoutPage.clickOnProceedToCheckoutButton2();
+        checkoutPage.completeCheckoutPage2();
 
     }
 }
